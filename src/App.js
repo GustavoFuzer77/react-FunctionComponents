@@ -2,15 +2,15 @@ import React from "react";
 import GlobalStyle from './styles/index'
 import Header from './components/Header/index';
 import Rotas from "./routes";
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header/>
       <Rotas/> 
       <GlobalStyle/>
-    </Router>
+    </BrowserRouter>
   )
 }
 

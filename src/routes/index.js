@@ -1,17 +1,19 @@
-import React from "react";
-import { Routes, Route, Navigate } from 'react-router-dom'; //v6 <-
+import { Switch, Route } from 'react-router-dom'; //v6 <-
 
+import ItemIdParams from '../pages/idItem'
 import Login from "../pages/login";
 import Itens from "../pages/itens";
 import PageError404 from '../pages/page404/index';
+import PrivateRoute from './PrivateRoute';
 
 export default function Rotas() {
   return (
-    <Routes>
-      <Route exact path='/login' element={<Login />} />
-      <Route exact path='/item'element={<Itens/>} />
-      <Route path='*' element={<PageError404 />} />
-    </Routes>
+    <Switch>
+      <Route exact path='/login' component={Login} />
+      <PrivateRoute IsClosed exact path='/item' render={() => (<Itens/>)}  />
+      <Route path='/item/:id' component={ItemIdParams} />
+      <Route path='*' component={PageError404} />
+    </Switch>
   )
 }
 

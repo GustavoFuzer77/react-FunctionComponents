@@ -1,19 +1,19 @@
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-export default function PrivateRoute({ element: Element, IsClosed, ...rest }) {
+export default function PrivateRoute({ component: Component, IsClosed, ...rest }) {
   const isLoggedIn = false;
 
   if (IsClosed && !isLoggedIn) {
     return (
-      <Navigate
+      <Redirect
         to={{ pathname: '/login', state: { prevPath: rest.location.pathname } }}
       />
     )
   }
 
-  return <Route {...rest} element={Element}/> // component={Component}
+  return <Route {...rest} component={Component}/> // component={Component}
 }
 
 PrivateRoute.defaultProps = {

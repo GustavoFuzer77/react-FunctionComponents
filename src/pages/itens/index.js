@@ -4,10 +4,12 @@ import { ItemGroup, Button } from './styled';
 import axios from '../../services/axios';
 import Modal from "../../components/EditPut";
 
-
 export default function Itens(){
 
   const [item, setItem] = useState([]);
+
+  const [modal, setModal] = useState()
+
 
   const getItem = async () =>{
     try{
@@ -43,13 +45,12 @@ export default function Itens(){
     <Container>
     <>
       <ul>
-        <h1 style={{ color: 'white'}} >precisa logar para ver</h1>
         {item && item.length > 0 && item.map((data) => (
           <ItemGroup key={data.id}>Nome:{data.name}  | ID: {data.id}   |  Preço: {data.price}</ItemGroup>
         ))}
       </ul>
       <Button onClick={() => {
-        return <Modal/>
+        return <Itens/>
       }}>Criar</Button>
     </>
   </Container>
