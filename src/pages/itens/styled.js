@@ -5,6 +5,11 @@ export const ItemGroup = styled.li`
   font-size: 2rem;
   font-family: sans-serif;
   font-weight: 600;
+
+  @media (max-width: 600px){
+    width: 100%;
+    font-size: 1.5rem;
+  }
 `;
 
 export const Button =styled.button`

@@ -3,13 +3,15 @@ import { Container } from "../../styles";
 import { ItemGroup, Button } from './styled';
 import axios from '../../services/axios';
 import Modal from "../../components/EditPut";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import * as modalAction from '../../store/modules/modal/actions';
 
 export default function Itens(){
 
+  const dispatch = useDispatch();
+
   const [item, setItem] = useState([]);
-
-  const [modal, setModal] = useState()
-
 
   const getItem = async () =>{
     try{
@@ -37,9 +39,11 @@ export default function Itens(){
     getItem()
   },[])
 
-  // useEffect( () => {
-  //   putItem()
-  // },[])
+  function handleClick(e){
+    dispatch(modalAction.modalOpenerRequest());
+  }
+
+  const ModalOpening = useSelector(state => state.modalReducer.botaoClicado)
 
   return (
     <Container>
@@ -49,9 +53,8 @@ export default function Itens(){
           <ItemGroup key={data.id}>Nome:{data.name}  | ID: {data.id}   |  Preço: {data.price}</ItemGroup>
         ))}
       </ul>
-      <Button onClick={() => {
-        return <Itens/>
-      }}>Criar</Button>
+      <Button onClick={() => handleClick()}>Criar</Button>
+      {ModalOpening ? 'CLICADO' : 'NÃO CLICADO'}
     </>
   </Container>
   )

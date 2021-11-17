@@ -1,0 +1,3 @@
+export const MODAL_SUCCESS = 'MODAL_SUCCESS'
+export const MODAL_REQUEST = 'MODAL_REQUEST'
+export const MODAL_FAILURE = 'MODAL_FAILURE'

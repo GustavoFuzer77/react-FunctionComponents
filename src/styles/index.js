@@ -34,4 +34,8 @@ export const Container = styled.section`
   padding: 25px;
   border-radius: 5px;
   background-color: ${darkColor};
+
+  @media (max-width: 600px){
+    width: 300px;
+  }
 `;

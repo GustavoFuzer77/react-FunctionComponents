@@ -10,7 +10,7 @@ export default function Rotas() {
   return (
     <Switch>
       <Route exact path='/login' component={Login} />
-      <PrivateRoute IsClosed exact path='/item' render={() => (<Itens/>)}  />
+      <PrivateRoute exact path='/item' render={() => (<Itens/>)}  />
       <Route path='/item/:id' component={ItemIdParams} />
       <Route path='*' component={PageError404} />
     </Switch>
